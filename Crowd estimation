@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+struct Station {
+	string name;
+	int peopleEntering;
+	int peopleLeaving;
+	int ticketsIssuedOnline;
+	int ticketsIssuedOffline;
+};
+
+int main() {
+	vector<Station> stations = {
+    	{"Kalyan", 0, 0, 0, 0},
+    	{"Thane", 0, 0, 0, 0},
+    	{"Bhandup", 0, 0, 0, 0},
+    	{"Ghatkopar", 0, 0, 0, 0},
+    	{"Kurla", 0, 0, 0, 0},
+    	{"Dadar", 0, 0, 0, 0},
+    	{"Mumbai Central", 0, 0, 0, 0},
+    	{"CST", 0, 0, 0, 0}
+	};
+
+	int totalPeopleOnBoard = 0;
+
+	for (int i = 0; i < stations.size(); i++) {
+    	cout << "Station: " << stations[i].name << endl;
+
+    	if (i == 0) {
+        	cout << "Enter number of people entering: ";
+        	cin >> stations[i].peopleEntering;
+        	totalPeopleOnBoard = stations[i].peopleEntering;
+        	cout << "Current total: " << totalPeopleOnBoard << endl;
+    	} else {
+        	cout << "Enter number of people entering: ";
+        	cin >> stations[i].peopleEntering;
+
+        	cout << "Enter number of people leaving: ";
+        	cin >> stations[i].peopleLeaving;
+
+        	cout << "Enter number of tickets issued online: ";
+        	cin >> stations[i].ticketsIssuedOnline;
+
+        	cout << "Enter number of tickets issued offline: ";
+        	cin >> stations[i].ticketsIssuedOffline;
+
+        	totalPeopleOnBoard = totalPeopleOnBoard + stations[i].peopleEntering - stations[i].peopleLeaving;
+        	cout << "Current total: " << totalPeopleOnBoard << endl;
+        	cout << endl;
+    	}
+	}
+
+	return 0;
+}
